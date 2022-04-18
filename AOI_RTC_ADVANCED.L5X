@@ -1,0 +1,778 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_RTC_ADVANCED" TargetType="AddOnInstructionDefinition" TargetRevision="1.3 " TargetLastEdited="2018-11-06T18:14:54.097Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 16:00:36 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+<DataType Name="RTC" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Year" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Month" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Day" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Hour" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Minute" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Second" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Microsecond" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+<DataType Name="RTC_ADVANCED" Family="NoFamily" Class="User">
+<Members>
+<Member Name="BootTime" DataType="RTC" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BootTime1970" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BootTime1970Utc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BootTime1980" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BootTime1980Utc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BootTime2010" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="BootTime2010Utc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="FlagDST" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="ZZZZZZZZZZRTC_ADVANC8" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="FlagLeapYear" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZRTC_ADVANC8" BitNumber="0" ExternalAccess="Read/Write"/>
+<Member Name="FlagLeapYearUtc" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZRTC_ADVANC8" BitNumber="1" ExternalAccess="Read/Write"/>
+<Member Name="DayOfWeek" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DayOfWeekUtc" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DayOfYear" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="DayOfYearUtc" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="MsecBetweenScans" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="MinuteOfDay" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="MinuteOfDayUtc" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="RTC" DataType="RTC" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="RTCUtc" DataType="RTC" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecondOfDay" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecondOfDayUtc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecSince1970" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecSince1970Utc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecSince1980" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecSince1980Utc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecSince2010" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="SecSince2010Utc" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="TimeZoneString" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UptimeDay" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UptimeHour" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UptimeMin" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UptimeSec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UsecBetweenScans" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UtcShiftHour" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="UtcShiftSec" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="RTC"/>
+<Dependency Type="DataType" Name="RTC"/>
+<Dependency Type="DataType" Name="RTC"/>
+</Dependencies>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_RTC_ADVANCED" Revision="1.3" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2018-04-18T01:56:29.852Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2018-11-06T18:14:54.097Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v24.02"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="RTCA" TagType="Base" DataType="RTC_ADVANCED" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+</Parameters>
+<LocalTags>
+<LocalTag Name="DowMonth" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DowYear" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Dow" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ReadArrayUtc" DataType="DINT" Dimensions="7" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0,0,0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Array DataType="DINT" Dimensions="7" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ReadArray" DataType="DINT" Dimensions="7" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0,0,0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Array DataType="DINT" Dimensions="7" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+<Element Index="[5]" Value="0"/>
+<Element Index="[6]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DowMonthUtc" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DowYearUtc" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DowUtc" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ReadRaw" DataType="DINT" Dimensions="2" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Array DataType="DINT" Dimensions="2" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="RawValueCurr" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="RawValuePrev" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="ST">
+<STContent>
+<Line Number="0">
+<![CDATA[// Advanced RTC Calculations]]>
+</Line>
+<Line Number="1">
+<![CDATA[GSV(WallClockTime,, LocalDateTime, ReadArray[0]); // Local Time]]>
+</Line>
+<Line Number="2">
+<![CDATA[GSV(WallClockTime,, DateTime, ReadArrayUtc[0]);   // UTC Time]]>
+</Line>
+<Line Number="3">
+<![CDATA[GSV(WallClockTime,, CurrentValue, ReadRaw[0]);    // Raw Microseconds Since Epoch Time]]>
+</Line>
+<Line Number="4">
+<![CDATA[RTCA.RTC.Year           := ReadArray[0];]]>
+</Line>
+<Line Number="5">
+<![CDATA[RTCA.RTC.Month          := ReadArray[1];]]>
+</Line>
+<Line Number="6">
+<![CDATA[RTCA.RTC.Day            := ReadArray[2];]]>
+</Line>
+<Line Number="7">
+<![CDATA[RTCA.RTC.Hour           := ReadArray[3];]]>
+</Line>
+<Line Number="8">
+<![CDATA[RTCA.RTC.Minute         := ReadArray[4];]]>
+</Line>
+<Line Number="9">
+<![CDATA[RTCA.RTC.Second         := ReadArray[5];]]>
+</Line>
+<Line Number="10">
+<![CDATA[RTCA.RTC.Microsecond    := ReadArray[6];]]>
+</Line>
+<Line Number="11">
+<![CDATA[RTCA.RTCUtc.Year        := ReadArrayUtc[0];]]>
+</Line>
+<Line Number="12">
+<![CDATA[RTCA.RTCUtc.Month       := ReadArrayUtc[1];]]>
+</Line>
+<Line Number="13">
+<![CDATA[RTCA.RTCUtc.Day         := ReadArrayUtc[2];]]>
+</Line>
+<Line Number="14">
+<![CDATA[RTCA.RTCUtc.Hour        := ReadArrayUtc[3];]]>
+</Line>
+<Line Number="15">
+<![CDATA[RTCA.RTCUtc.Minute      := ReadArrayUtc[4];]]>
+</Line>
+<Line Number="16">
+<![CDATA[RTCA.RTCUtc.Second      := ReadArrayUtc[5];]]>
+</Line>
+<Line Number="17">
+<![CDATA[RTCA.RTCUtc.Microsecond := ReadArrayUtc[6];]]>
+</Line>
+<Line Number="18">
+<![CDATA[]]>
+</Line>
+<Line Number="19">
+<![CDATA[// Time Between Scans]]>
+</Line>
+<Line Number="20">
+<![CDATA[RawValuePrev          := RawValueCurr;]]>
+</Line>
+<Line Number="21">
+<![CDATA[RawValueCurr          := ReadRaw[0] & 16#7FFFFFFF;]]>
+</Line>
+<Line Number="22">
+<![CDATA[RTCA.UsecBetweenScans := RawValueCurr - RawValuePrev;]]>
+</Line>
+<Line Number="23">
+<![CDATA[RTCA.MsecBetweenScans := RTCA.UsecBetweenScans / 1000;]]>
+</Line>
+<Line Number="24">
+<![CDATA[]]>
+</Line>
+<Line Number="25">
+<![CDATA[// Minute of Day]]>
+</Line>
+<Line Number="26">
+<![CDATA[RTCA.MinuteOfDay    := RTCA.RTC.Hour * 24 + RTCA.RTC.Minute;]]>
+</Line>
+<Line Number="27">
+<![CDATA[RTCA.MinuteOfDayUtc := RTCA.RTCUtc.Hour * 24 + RTCA.RTCUtc.Minute;]]>
+</Line>
+<Line Number="28">
+<![CDATA[]]>
+</Line>
+<Line Number="29">
+<![CDATA[// Second of Day]]>
+</Line>
+<Line Number="30">
+<![CDATA[RTCA.SecondOfDay    := (RTCA.RTC.Hour * 1440) + (RTCA.RTC.Minute * 60) + RTCA.RTC.Second;]]>
+</Line>
+<Line Number="31">
+<![CDATA[RTCA.SecondOfDayUtc := (RTCA.RTCUtc.Hour * 1440) + (RTCA.RTCUtc.Minute * 60) + RTCA.RTCUtc.Second;]]>
+</Line>
+<Line Number="32">
+<![CDATA[]]>
+</Line>
+<Line Number="33">
+<![CDATA[// Day of the Week (0 = Sunday, 6 = Saturday)]]>
+</Line>
+<Line Number="34">
+<![CDATA[// Note:  For algorithm, see http://alcor.concordia.ca/~gpkatch/gdate-algorithm.html]]>
+</Line>
+<Line Number="35">
+<![CDATA[DowMonth    := (RTCA.RTC.Month + 9) MOD 12;]]>
+</Line>
+<Line Number="36">
+<![CDATA[DowYear     := RTCA.RTC.Year - DowMonth/10;]]>
+</Line>
+<Line Number="37">
+<![CDATA[Dow         := (365 * DowYear]]>
+</Line>
+<Line Number="38">
+<![CDATA[             + DowYear / 4]]>
+</Line>
+<Line Number="39">
+<![CDATA[             - DowYear / 100]]>
+</Line>
+<Line Number="40">
+<![CDATA[             + DowYear / 400]]>
+</Line>
+<Line Number="41">
+<![CDATA[             + (DowMonth * 306 + 5) / 10]]>
+</Line>
+<Line Number="42">
+<![CDATA[             + RTCA.RTC.Day + 2) MOD 7;]]>
+</Line>
+<Line Number="43">
+<![CDATA[DowMonthUtc := (RTCA.RTCUtc.Month + 9) MOD 12;]]>
+</Line>
+<Line Number="44">
+<![CDATA[DowYearUtc  := RTCA.RTCUtc.Year - DowMonthUtc/10;]]>
+</Line>
+<Line Number="45">
+<![CDATA[DowUtc      := (365 * DowYearUtc]]>
+</Line>
+<Line Number="46">
+<![CDATA[             + DowYearUtc / 4]]>
+</Line>
+<Line Number="47">
+<![CDATA[             - DowYearUtc / 100]]>
+</Line>
+<Line Number="48">
+<![CDATA[             + DowYearUtc / 400]]>
+</Line>
+<Line Number="49">
+<![CDATA[             + (DowMonthUtc * 306 + 5) / 10]]>
+</Line>
+<Line Number="50">
+<![CDATA[             + RTCA.RTCUtc.Day + 2) MOD 7;]]>
+</Line>
+<Line Number="51">
+<![CDATA[// Note: ControlLogix MOD operation differs from the intent of the original algorithm, so the]]>
+</Line>
+<Line Number="52">
+<![CDATA[// logic below makes an adjustment to the output from the MOD for negative divisors.]]>
+</Line>
+<Line Number="53">
+<![CDATA[IF Dow < 0 THEN]]>
+</Line>
+<Line Number="54">
+<![CDATA[   RTCA.DayOfWeek := Dow + 7;]]>
+</Line>
+<Line Number="55">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="56">
+<![CDATA[   RTCA.DayOfWeek := Dow;]]>
+</Line>
+<Line Number="57">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="58">
+<![CDATA[IF DowUtc < 0 THEN]]>
+</Line>
+<Line Number="59">
+<![CDATA[   RTCA.DayOfWeekUtc := DowUtc + 7;]]>
+</Line>
+<Line Number="60">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="61">
+<![CDATA[   RTCA.DayOfWeekUtc := DowUtc;]]>
+</Line>
+<Line Number="62">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="63">
+<![CDATA[]]>
+</Line>
+<Line Number="64">
+<![CDATA[// Leap Year Determination]]>
+</Line>
+<Line Number="65">
+<![CDATA[IF ((RTCA.RTC.Year MOD 4) = 0)     AND     ((RTCA.RTC.Year MOD 100) <> 0)   OR   ((RTCA.RTC.Year MOD 400) = 0) THEN]]>
+</Line>
+<Line Number="66">
+<![CDATA[   RTCA.FlagLeapYear := 1;]]>
+</Line>
+<Line Number="67">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="68">
+<![CDATA[   RTCA.FlagLeapYear := 0;]]>
+</Line>
+<Line Number="69">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="70">
+<![CDATA[IF ((RTCA.RTCUtc.Year MOD 4) = 0)     AND     ((RTCA.RTCUtc.Year MOD 100) <> 0)   OR   ((RTCA.RTCUtc.Year MOD 400) = 0) THEN]]>
+</Line>
+<Line Number="71">
+<![CDATA[   RTCA.FlagLeapYearUtc := 1;]]>
+</Line>
+<Line Number="72">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="73">
+<![CDATA[   RTCA.FlagLeapYearUtc := 0;]]>
+</Line>
+<Line Number="74">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="75">
+<![CDATA[]]>
+</Line>
+<Line Number="76">
+<![CDATA[// Day of Year]]>
+</Line>
+<Line Number="77">
+<![CDATA[IF RTCA.RTC.Month < 3 THEN]]>
+</Line>
+<Line Number="78">
+<![CDATA[   RTCA.DayOfYear := RTCA.RTC.Day + TRUNC((306 * RTCA.RTC.Month - 301) / 10);]]>
+</Line>
+<Line Number="79">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="80">
+<![CDATA[   IF RTCA.FlagLeapYear THEN]]>
+</Line>
+<Line Number="81">
+<![CDATA[      RTCA.DayOfYear := RTCA.RTC.Day + TRUNC((306 * RTCA.RTC.Month - 913) / 10) + 60;]]>
+</Line>
+<Line Number="82">
+<![CDATA[   ELSE]]>
+</Line>
+<Line Number="83">
+<![CDATA[      RTCA.DayOfYear := RTCA.RTC.Day + TRUNC((306 * RTCA.RTC.Month - 913) / 10) + 59;]]>
+</Line>
+<Line Number="84">
+<![CDATA[   END_IF;]]>
+</Line>
+<Line Number="85">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="86">
+<![CDATA[IF RTCA.RTCUtc.Month < 3 THEN]]>
+</Line>
+<Line Number="87">
+<![CDATA[   RTCA.DayOfYearUtc := RTCA.RTCUtc.Day + TRUNC((306 * RTCA.RTCUtc.Month - 301) / 10);]]>
+</Line>
+<Line Number="88">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="89">
+<![CDATA[   IF RTCA.FlagLeapYearUtc THEN]]>
+</Line>
+<Line Number="90">
+<![CDATA[      RTCA.DayOfYearUtc := RTCA.RTCUtc.Day + TRUNC((306 * RTCA.RTCUtc.Month - 913) / 10) + 60;]]>
+</Line>
+<Line Number="91">
+<![CDATA[   ELSE]]>
+</Line>
+<Line Number="92">
+<![CDATA[      RTCA.DayOfYearUtc := RTCA.RTCUtc.Day + TRUNC((306 * RTCA.RTCUtc.Month - 913) / 10) + 59;]]>
+</Line>
+<Line Number="93">
+<![CDATA[   END_IF;]]>
+</Line>
+<Line Number="94">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="95">
+<![CDATA[]]>
+</Line>
+<Line Number="96">
+<![CDATA[// Daylight Savings Time Determination]]>
+</Line>
+<Line Number="97">
+<![CDATA[IF (RTCA.RTC.Month >= 4   AND   RTCA.RTC.Month <= 10)   OR]]>
+</Line>
+<Line Number="98">
+<![CDATA[   (RTCA.RTC.Month = 3   AND   RTCA.RTC.Day > 14)   OR]]>
+</Line>
+<Line Number="99">
+<![CDATA[   (RTCA.RTC.Month = 3   AND   RTCA.RTC.Day >= 8   AND   RTCA.DayOfWeek = 0   AND   RTCA.RTC.Hour >= 2) THEN]]>
+</Line>
+<Line Number="100">
+<![CDATA[   RTCA.FlagDST := 1;]]>
+</Line>
+<Line Number="101">
+<![CDATA[ELSIF (RTCA.RTC.Month <= 2   OR   RTCA.RTC.Month = 12)   OR]]>
+</Line>
+<Line Number="102">
+<![CDATA[      (RTCA.RTC.Month = 11   AND   RTCA.RTC.Day >= 8)   OR]]>
+</Line>
+<Line Number="103">
+<![CDATA[      (RTCA.RTC.Month = 11   AND   RTCA.RTC.Day < 8   AND   RTCA.DayOfWeek = 0   AND   RTCA.RTC.Hour >= 2) THEN]]>
+</Line>
+<Line Number="104">
+<![CDATA[   RTCA.FlagDST := 0;]]>
+</Line>
+<Line Number="105">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="106">
+<![CDATA[   RTCA.FlagDST := 0;]]>
+</Line>
+<Line Number="107">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="108">
+<![CDATA[]]>
+</Line>
+<Line Number="109">
+<![CDATA[// Seconds Since 1970 (Epoch)]]>
+</Line>
+<Line Number="110">
+<![CDATA[RTCA.SecSince1970    := RTCA.RTC.Second]]>
+</Line>
+<Line Number="111">
+<![CDATA[                      + RTCA.RTC.Minute * 60]]>
+</Line>
+<Line Number="112">
+<![CDATA[                      + RTCA.RTC.Hour * 3600]]>
+</Line>
+<Line Number="113">
+<![CDATA[                      + RTCA.DayOfYear * 86400]]>
+</Line>
+<Line Number="114">
+<![CDATA[                      + (RTCA.RTC.Year - 1970) * 31536000]]>
+</Line>
+<Line Number="115">
+<![CDATA[                      + ((RTCA.RTC.Year - 1969) / 4) * 86400]]>
+</Line>
+<Line Number="116">
+<![CDATA[                      - ((RTCA.RTC.Year - 1901) / 100) * 86400]]>
+</Line>
+<Line Number="117">
+<![CDATA[                      + ((RTCA.RTC.Year - 1900 + 299) / 400) * 86400 - 86400;]]>
+</Line>
+<Line Number="118">
+<![CDATA[RTCA.SecSince1970Utc := RTCA.RTCUtc.Second]]>
+</Line>
+<Line Number="119">
+<![CDATA[                      + RTCA.RTCUtc.Minute * 60]]>
+</Line>
+<Line Number="120">
+<![CDATA[                      + RTCA.RTCUtc.Hour * 3600]]>
+</Line>
+<Line Number="121">
+<![CDATA[                      + RTCA.DayOfYearUtc * 86400]]>
+</Line>
+<Line Number="122">
+<![CDATA[                      + (RTCA.RTCUtc.Year - 1970) * 31536000]]>
+</Line>
+<Line Number="123">
+<![CDATA[                      + ((RTCA.RTCUtc.Year - 1969) / 4) * 86400]]>
+</Line>
+<Line Number="124">
+<![CDATA[                      - ((RTCA.RTCUtc.Year - 1901) / 100) * 86400]]>
+</Line>
+<Line Number="125">
+<![CDATA[                      + ((RTCA.RTCUtc.Year - 1900 + 299) / 400) * 86400 - 86400;]]>
+</Line>
+<Line Number="126">
+<![CDATA[RTCA.SecSince1980    := RTCA.RTC.Second]]>
+</Line>
+<Line Number="127">
+<![CDATA[                      + RTCA.RTC.Minute * 60]]>
+</Line>
+<Line Number="128">
+<![CDATA[                      + RTCA.RTC.Hour * 3600]]>
+</Line>
+<Line Number="129">
+<![CDATA[                      + RTCA.DayOfYear * 86400]]>
+</Line>
+<Line Number="130">
+<![CDATA[                      - 315532800 //Adjustment from 1970 to January 1, 1980 12:00:00 AM]]>
+</Line>
+<Line Number="131">
+<![CDATA[                      + (RTCA.RTC.Year - 1970) * 31536000]]>
+</Line>
+<Line Number="132">
+<![CDATA[                      + ((RTCA.RTC.Year - 1969) / 4) * 86400]]>
+</Line>
+<Line Number="133">
+<![CDATA[                      - ((RTCA.RTC.Year - 1901) / 100) * 86400]]>
+</Line>
+<Line Number="134">
+<![CDATA[                      + ((RTCA.RTC.Year - 1900 + 299) / 400) * 86400 - 86400;]]>
+</Line>
+<Line Number="135">
+<![CDATA[RTCA.SecSince1980Utc := RTCA.RTCUtc.Second]]>
+</Line>
+<Line Number="136">
+<![CDATA[                      + RTCA.RTCUtc.Minute * 60]]>
+</Line>
+<Line Number="137">
+<![CDATA[                      + RTCA.RTCUtc.Hour * 3600]]>
+</Line>
+<Line Number="138">
+<![CDATA[                      + RTCA.DayOfYearUtc * 86400]]>
+</Line>
+<Line Number="139">
+<![CDATA[                      - 315532800 //Adjustment from 1970 to January 1, 1980 12:00:00 AM]]>
+</Line>
+<Line Number="140">
+<![CDATA[                      + (RTCA.RTCUtc.Year - 1970) * 31536000]]>
+</Line>
+<Line Number="141">
+<![CDATA[                      + ((RTCA.RTCUtc.Year - 1969) / 4) * 86400]]>
+</Line>
+<Line Number="142">
+<![CDATA[                      - ((RTCA.RTCUtc.Year - 1901) / 100) * 86400]]>
+</Line>
+<Line Number="143">
+<![CDATA[                      + ((RTCA.RTCUtc.Year - 1900 + 299) / 400) * 86400 - 86400;]]>
+</Line>
+<Line Number="144">
+<![CDATA[RTCA.SecSince2010    := RTCA.RTC.Second]]>
+</Line>
+<Line Number="145">
+<![CDATA[                      + RTCA.RTC.Minute * 60]]>
+</Line>
+<Line Number="146">
+<![CDATA[                      + RTCA.RTC.Hour * 3600]]>
+</Line>
+<Line Number="147">
+<![CDATA[                      + RTCA.DayOfYear * 86400]]>
+</Line>
+<Line Number="148">
+<![CDATA[                      - 1262304000 //Adjustment from 1970 to January 1, 2010 12:00:00 AM]]>
+</Line>
+<Line Number="149">
+<![CDATA[                      + (RTCA.RTC.Year - 1970) * 31536000]]>
+</Line>
+<Line Number="150">
+<![CDATA[                      + ((RTCA.RTC.Year - 1969) / 4) * 86400]]>
+</Line>
+<Line Number="151">
+<![CDATA[                      - ((RTCA.RTC.Year - 1901) / 100) * 86400]]>
+</Line>
+<Line Number="152">
+<![CDATA[                      + ((RTCA.RTC.Year - 1900 + 299) / 400) * 86400 - 86400;]]>
+</Line>
+<Line Number="153">
+<![CDATA[RTCA.SecSince2010Utc := RTCA.RTCUtc.Second]]>
+</Line>
+<Line Number="154">
+<![CDATA[                      + RTCA.RTCUtc.Minute * 60]]>
+</Line>
+<Line Number="155">
+<![CDATA[                      + RTCA.RTCUtc.Hour * 3600]]>
+</Line>
+<Line Number="156">
+<![CDATA[                      + RTCA.DayOfYearUtc * 86400]]>
+</Line>
+<Line Number="157">
+<![CDATA[                      - 1262304000 //Adjustment from 1970 to January 1, 2010 12:00:00 AM]]>
+</Line>
+<Line Number="158">
+<![CDATA[                      + (RTCA.RTCUtc.Year - 1970) * 31536000]]>
+</Line>
+<Line Number="159">
+<![CDATA[                      + ((RTCA.RTCUtc.Year - 1969) / 4) * 86400]]>
+</Line>
+<Line Number="160">
+<![CDATA[                      - ((RTCA.RTCUtc.Year - 1901) / 100) * 86400]]>
+</Line>
+<Line Number="161">
+<![CDATA[                      + ((RTCA.RTCUtc.Year - 1900 + 299) / 400) * 86400 - 86400;]]>
+</Line>
+<Line Number="162">
+<![CDATA[]]>
+</Line>
+<Line Number="163">
+<![CDATA[// UTC vs. Local Timeshift]]>
+</Line>
+<Line Number="164">
+<![CDATA[RTCA.UtcShiftSec  := RTCA.SecSince2010Utc - RTCA.SecSince2010;]]>
+</Line>
+<Line Number="165">
+<![CDATA[RTCA.UtcShiftHour := RTCA.UtcShiftSec / 3600;]]>
+</Line>
+<Line Number="166">
+<![CDATA[GSV(WallClockTime,,TimeZoneString,RTCA.TimeZoneString);]]>
+</Line>
+<Line Number="167">
+<![CDATA[]]>
+</Line>
+<Line Number="168">
+<![CDATA[// Boot Timestamp]]>
+</Line>
+<Line Number="169">
+<![CDATA[IF S:FS THEN]]>
+</Line>
+<Line Number="170">
+<![CDATA[   CPS(RTCA.RTC, RTCA.BootTime, 1);]]>
+</Line>
+<Line Number="171">
+<![CDATA[   RTCA.BootTime1970    := RTCA.SecSince1970;]]>
+</Line>
+<Line Number="172">
+<![CDATA[   RTCA.BootTime1970Utc := RTCA.SecSince1970Utc;]]>
+</Line>
+<Line Number="173">
+<![CDATA[   RTCA.BootTime1980    := RTCA.SecSince1980;]]>
+</Line>
+<Line Number="174">
+<![CDATA[   RTCA.BootTime1980Utc := RTCA.SecSince1980Utc;]]>
+</Line>
+<Line Number="175">
+<![CDATA[   RTCA.BootTime2010    := RTCA.SecSince2010;]]>
+</Line>
+<Line Number="176">
+<![CDATA[   RTCA.BootTime2010Utc := RTCA.SecSince2010Utc;]]>
+</Line>
+<Line Number="177">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="178">
+<![CDATA[]]>
+</Line>
+<Line Number="179">
+<![CDATA[// Uptime]]>
+</Line>
+<Line Number="180">
+<![CDATA[IF S:FS THEN]]>
+</Line>
+<Line Number="181">
+<![CDATA[   RTCA.UptimeSec   := 0;]]>
+</Line>
+<Line Number="182">
+<![CDATA[   RTCA.UptimeMin   := 0;]]>
+</Line>
+<Line Number="183">
+<![CDATA[   RTCA.UptimeHour  := 0;]]>
+</Line>
+<Line Number="184">
+<![CDATA[   RTCA.UptimeDay   := 0;]]>
+</Line>
+<Line Number="185">
+<![CDATA[ELSE]]>
+</Line>
+<Line Number="186">
+<![CDATA[   RTCA.UptimeSec   := RTCA.SecSince2010Utc - RTCA.BootTime2010Utc;]]>
+</Line>
+<Line Number="187">
+<![CDATA[   RTCA.UptimeMin   := RTCA.UptimeSec / 60;]]>
+</Line>
+<Line Number="188">
+<![CDATA[   RTCA.UptimeHour  := RTCA.UptimeMin / 60;]]>
+</Line>
+<Line Number="189">
+<![CDATA[   RTCA.UptimeDay   := RTCA.UptimeHour / 24;]]>
+</Line>
+<Line Number="190">
+<![CDATA[END_IF;]]>
+</Line>
+<Line Number="191">
+<![CDATA[]]>
+</Line>
+<Line Number="192">
+<![CDATA[]]>
+</Line>
+</STContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="RTC_ADVANCED"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

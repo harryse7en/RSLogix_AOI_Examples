@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_RESTART_INHIBIT" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2014-11-01T16:55:43.323Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 16:00:10 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_RESTART_INHIBIT" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2014-11-01T00:34:57.277Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2014-11-01T16:55:43.323Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v21.03"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="AllowedStartCount1" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AllowedStartPeriod1" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AllowedStartCount2" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AllowedStartPeriod2" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AllowedStartCount3" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AllowedStartPeriod3" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="RunCmd" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="ResetCmd" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="ActualStartCount1" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="ActualStartCount2" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="ActualStartCount3" TagType="Base" DataType="DINT" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Active" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Active1" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Active2" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Active3" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="StartPeriod2" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="StartPeriod1" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ONS" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="StartPeriod3" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[[LES(AllowedStartPeriod1,0) MOV(0,AllowedStartPeriod1) ,LES(AllowedStartPeriod2,0) MOV(0,AllowedStartPeriod2) ,LES(AllowedStartPeriod3,0) MOV(0,AllowedStartPeriod3) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIC(RunCmd)ONS(ONS.0)ADD(ActualStartCount1,1,ActualStartCount1);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[GRT(ActualStartCount1,0)[MOV(AllowedStartPeriod1,StartPeriod1.PRE) ,TON(StartPeriod1,?,?) ,[XIC(StartPeriod1.DN) ,XIC(ResetCmd) ] [CLR(ActualStartCount1) ,RES(StartPeriod1) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[GEQ(ActualStartCount1,AllowedStartCount1)XIO(RunCmd)OTE(Active1);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIC(RunCmd)ONS(ONS.1)ADD(ActualStartCount2,1,ActualStartCount2);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[GRT(ActualStartCount2,0)[MOV(AllowedStartPeriod2,StartPeriod2.PRE) ,TON(StartPeriod2,?,?) ,[XIC(StartPeriod2.DN) ,XIC(ResetCmd) ] [CLR(ActualStartCount2) ,RES(StartPeriod2) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[GEQ(ActualStartCount2,AllowedStartCount2)XIO(RunCmd)OTE(Active2);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[XIC(RunCmd)ONS(ONS.2)ADD(ActualStartCount3,1,ActualStartCount3);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[GRT(ActualStartCount3,0)[MOV(AllowedStartPeriod3,StartPeriod3.PRE) ,TON(StartPeriod3,?,?) ,[XIC(StartPeriod3.DN) ,XIC(ResetCmd) ] [CLR(ActualStartCount3) ,RES(StartPeriod3) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[GEQ(ActualStartCount3,AllowedStartCount3)XIO(RunCmd)OTE(Active3);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[[XIC(Active1) ,XIC(Active2) ,XIC(Active3) ]OTE(Active);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(ResetCmd)OTU(ResetCmd);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

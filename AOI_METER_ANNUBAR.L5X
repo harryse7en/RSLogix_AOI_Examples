@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_METER_ANNUBAR" TargetType="AddOnInstructionDefinition" TargetRevision="1.5 " TargetLastEdited="2018-09-13T23:29:50.972Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 15:59:12 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+<DataType Name="METER_DPCALC" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZMETER_DPCA0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Bypass" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter PM Bypass
+1 = BYPASSED]]>
+</Description>
+</Member>
+<Member Name="CommFail" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Comm. Failure Alarm]]>
+</Description>
+</Member>
+<Member Name="CommFailSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Comm. Failure Setpoint]]>
+</Description>
+</Member>
+<Member Name="DP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter D.P.]]>
+</Description>
+</Member>
+<Member Name="Flowrate" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Flowrate]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA6" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="HiDP" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA6" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High D.P. Alarm]]>
+</Description>
+</Member>
+<Member Name="HiDPSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High D.P. Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="HiFlow" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA9" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Flowrate Alarm]]>
+</Description>
+</Member>
+<Member Name="HiFlowSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Flowrate Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA12" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="HiPress" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA12" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Pressure Alarm]]>
+</Description>
+</Member>
+<Member Name="HiPressSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Pressure Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA15" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="HiTemp" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA15" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Temperature Alarm]]>
+</Description>
+</Member>
+<Member Name="HiTempSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Temperature Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA18" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LoDP" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA18" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low D.P. Alarm]]>
+</Description>
+</Member>
+<Member Name="LoDPSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low D.P. Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA21" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LoFlow" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA21" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Flowrate Alarm]]>
+</Description>
+</Member>
+<Member Name="LoFlowSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Flowrate Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA24" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LoPress" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA24" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Pressure Alarm]]>
+</Description>
+</Member>
+<Member Name="LoPressSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Pressure Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA27" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LoTemp" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA27" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Temperature Alarm]]>
+</Description>
+</Member>
+<Member Name="LoTempSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Temperature Setpoint]]>
+</Description>
+</Member>
+<Member Name="MB_RealData" DataType="INT" Dimension="10" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Modbus Data - Real Values As Integers 30401~30410]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_DPCA31" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="OOS" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_DPCA31" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Out of Service
+1 = OOS]]>
+</Description>
+</Member>
+<Member Name="Pressure" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Pressure]]>
+</Description>
+</Member>
+<Member Name="Temperature" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Temperature]]>
+</Description>
+</Member>
+<Member Name="StatusBits1" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Status Bits 1]]>
+</Description>
+</Member>
+<Member Name="StatusBits2" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Status Bits 2]]>
+</Description>
+</Member>
+<Member Name="StatusBits3" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Status Bits 3]]>
+</Description>
+</Member>
+<Member Name="Tmrs" DataType="METER_DPCALC_TMR" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Total" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Totalizer Volume]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsDP" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for D.P.]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsFlowrate" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for Flowrate]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsPressure" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for Pressure]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsTemp" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for Temperature]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsTotal" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for Totalizer]]>
+</Description>
+</Member>
+<Member Name="xName" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Name]]>
+</Description>
+</Member>
+<Member Name="xNumber" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Number]]>
+</Description>
+</Member>
+<Member Name="xServiceCode" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Service Code
+0 = Comingle
+1 = Condensate
+2 = Oil
+3 = Water]]>
+</Description>
+</Member>
+<Member Name="xTag" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter P&ID Tag]]>
+</Description>
+</Member>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="METER_DPCALC_TMR"/>
+</Dependencies>
+</DataType>
+<DataType Name="METER_DPCALC_TMR" Family="NoFamily" Class="User">
+<Members>
+<Member Name="Bypass" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HiFlow" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LoFlow" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HiDP" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HiPress" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HiTemp" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LoDP" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LoPress" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LoTemp" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_METER_ANNUBAR" Revision="1.5" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2014-04-22T03:08:53.282Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2018-09-13T23:29:50.972Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v24.02"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="DPCalc" TagType="Base" DataType="METER_DPCALC" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="DPLoCutoff" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[D.P. Low Flow Cutoff Value]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="PressType" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Pressure Input Type
+0 = Absolute PSIA
+1 = Gauge PSIG]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Rollover" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Atm" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Atmos. Pressure]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="K" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[K Factor]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="d" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Inside Diameter]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Ya" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Expansion Factor]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Gr" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Specific Gravity]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Fpv" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Supercompress Factor]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Faa" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Thermal Expansion Factor]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Flowrate" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Pf" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="hw" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Tf" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="false" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Qs" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Cl" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Fg" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[Specific Gravity Factor]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="D2" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[Inside Diameter Squared]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrCalc" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,999999999,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="999999999"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ONS" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="FlowratePerScan" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="SCFH" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrCommFail" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Health" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PrevHealth" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Ftf" DataType="REAL" Radix="Float" ExternalAccess="None">
+<Description>
+<![CDATA[Flowing Temperature Factor]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PerScanCalc" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[AOI METER -- ANNUBAR
+6/15/14 harryse7en
+
+The meter's DP and Temperature are combined to make a mock heartbeat, which is used to determine comm. failure.]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[[EQU(PressType,0) MOV(DPCalc.Pressure,Pf) ,EQU(PressType,1) ADD(DPCalc.Pressure,Atm,Pf) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[[LEQ(DPCalc.DP,DPLoCutoff) MOV(0.0,hw) ,GRT(DPCalc.DP,DPLoCutoff) MOV(DPCalc.DP,hw) ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[ADD(DPCalc.Temperature,459.67,Tf)MUL(d,d,D2);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[CPT(Ftf,SQR( 520.0 / ( DPCalc.Temperature + 459.67 )))CPT(Fg,SQR( 1.0 / Gr ));]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[CPT(Cl,338.11 * K * D2 * Ya * Ftf * Fg * Fpv * Faa);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIO(DPCalc.OOS)CPT(Qs,Cl * SQR ( hw * Pf ));]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[MOV(Qs,SCFH)MUL(Qs,0.024,Flowrate);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[XIC(DPCalc.OOS)CLR(Qs);]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[XIO(TmrCalc.DN)TON(TmrCalc,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[GRT(TmrCalc.ACC,100)[SUB(TmrCalc.ACC,100,TmrCalc.ACC) ,OTE(PerScanCalc) ];]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[XIC(PerScanCalc)CPT(FlowratePerScan,Qs / 3600000.0 / 10.0);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[XIO(Rollover)XIC(PerScanCalc)ADD(Total,FlowratePerScan,Total);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[XIC(Rollover)RES(TmrCalc)CLR(Total);]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[MOV(Flowrate,DPCalc.Flowrate)MOV(Total,DPCalc.Total);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[MUL(DPCalc.CommFailSP,1000,TmrCommFail.PRE)ADD(DPCalc.DP,DPCalc.Temperature,Health);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[XIO(DPCalc.OOS)[EQU(Health,PrevHealth) TON(TmrCommFail,?,?) ,XIC(TmrCommFail.DN) OTE(DPCalc.CommFail) ,NEQ(Health,PrevHealth) MOV(Health,PrevHealth) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="METER_DPCALC"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_CONVERT_64REAL_WORDS_TO_32REAL" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2018-06-15T22:50:41.837Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 15:56:24 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_CONVERT_64REAL_WORDS_TO_32REAL" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2018-06-15T19:27:31.731Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2018-06-15T22:50:41.837Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v30.01"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Word1" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Word2" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Word3" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Word4" TagType="Base" DataType="INT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Out" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="Scratchpad" DataType="INT" Dimensions="5" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Array DataType="INT" Dimensions="5" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+<Element Index="[2]" Value="0"/>
+<Element Index="[3]" Value="0"/>
+<Element Index="[4]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="SingleExp" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DoubleExp" DataType="INT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="INT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DINT" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Construct" DataType="INT" Dimensions="2" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Array DataType="INT" Dimensions="2" Radix="Decimal">
+<Element Index="[0]" Value="0"/>
+<Element Index="[1]" Value="0"/>
+</Array>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[
+Step 1) Determine what the exponent of the double is, and change it to a single float exponent.
+     DoubleExp   =   Word1 AND Hex_7FE0 (0111,1111,1110,0000)
+     DoubleExp  >>  4 (Rolls the bits to the right by four positions)
+]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[AND(Word1,32736,DoubleExp)CLR(DINT)BTD(DoubleExp,0,DINT,16,16)BTD(DINT,20,DoubleExp,0,16);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Comment>
+<![CDATA[
+Step 2) Change the double exponent into a single exponent.  This reduces it from 11 bits to 8 bits.
+     SingleExp   =   DoubleExp - 896 (Subtracts 1023 from DoubleExp to remove double exponent bias, adds 127 to inserts single bias)]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[SUB(DoubleExp,896,SingleExp);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Comment>
+<![CDATA[
+Step 3) Begin constructing the new single sign word (the second word construct)
+     Construct[1]   =   Word1 AND Hex_8000 (1000,0000,0000,0000)
+     Scratchpad[0]   =   SingleExp << 7 (Rolls the bits to the left by seven positions)
+     Construct[1]   =   Construct[1] OR Scratchpad[0] (Performs a combination move; the sign bit and the single exponent are combined)]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[AND(Word1,-32768,Construct[1])CLR(DINT)BTD(SingleExp,0,DINT,16,16)BTD(DINT,16,Scratchpad[0],7,16)OR(Construct[1],Scratchpad[0],Construct[1]);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Comment>
+<![CDATA[
+Step 4) Add the beginning of the mantissa to the second word contruct.
+     Scratchpad[1]   =   Word1 AND Hex_000F (0000,0000,0000,1111)
+     Scratchpad[1]   <<   3 (Rolls the bits to the left by three positions)
+     Construct[1]   =   Construct[1] OR Scratchpad[0] (Performs a combination move; the sign bit, exponent, and beginning mantissa are combined)]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[AND(Word1,15,Scratchpad[1])CLR(DINT)BTD(Scratchpad[1],0,DINT,16,16)CLR(Scratchpad[1])BTD(DINT,16,Scratchpad[1],3,16)OR(Construct[1],Scratchpad[1],Construct[1]);]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[
+Step 5) Add the section section of the mantissa to the second word contruct.
+     Scratchpad[2]   =   Word2 << 3 (Rolls the bits to the left by three positions)
+     Scratchpad[2]  AND  Hex_0007 (0000,0000,0000,0111)
+     Construct[1]   =   Construct[1] OR Scratchpad[2] (Performs a combination move; the sign bit, exponent, beginning and second mantissa are combined)
+
+     Construct[1] is now completely built and arranged.]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[BTD(Word2,13,Scratchpad[2],0,3)OR(Construct[1],Scratchpad[2],Construct[1]);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[
+Step 6) Add the third section of the mantissa to the first word contruct.
+     Scratchpad[3]   =   Word2 << 3 (Rolls the bits to the left by three positions)
+     Construct[0]   =   Scratchpad[3] AND Hex_FFF8 (1111,1111,1111,1000)]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[CLR(DINT)BTD(Word2,0,DINT,16,16)BTD(DINT,16,Scratchpad[3],3,16)AND(Scratchpad[3],-8,Construct[0]);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[
+Step 7) Add the ending section of the mantissa to the first word contruct.
+     Scratchpad[4]   =   Word3 << 13 (Rolls the bits to the right by thirteen positions)
+     Construct[0]   =   Scratchpad[4] AND Hex_0007 (0000,0000,0000,0111)
+
+     Construct[0] is now completely built and arranged.]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[BTD(Word3,13,Scratchpad[4],0,3)OR(Construct[0],Scratchpad[4],Construct[0]);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Comment>
+<![CDATA[
+Step 8) Move the two constructs into a REAL variable.
+     Word 4 is not used, so conversion from 64 bit REAL to 32 bit REAL is complete.
+]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[COP(Construct[0],Out,1);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

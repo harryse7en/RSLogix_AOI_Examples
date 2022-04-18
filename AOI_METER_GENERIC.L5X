@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_METER_GENERIC" TargetType="AddOnInstructionDefinition" TargetRevision="1.5 " TargetLastEdited="2018-09-13T23:25:53.195Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 15:59:18 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+<DataType Name="METER_GENERIC" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[v1.0]]>
+</Description>
+<Members>
+<Member Name="ZZZZZZZZZZMETER_GENE0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="Bypass" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_GENE0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter PM Bypass
+1 = BYPASSED]]>
+</Description>
+</Member>
+<Member Name="CommFail" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_GENE0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Comm. Failure Alarm]]>
+</Description>
+</Member>
+<Member Name="CommFailSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Comm. Failure Setpoint]]>
+</Description>
+</Member>
+<Member Name="Flowrate" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Flowrate]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_GENE5" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="FTPulse" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_GENE5" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter I/O - Flow Transmitter Pulse]]>
+</Description>
+</Member>
+<Member Name="HiFlow" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_GENE5" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Flowrate Alarm]]>
+</Description>
+</Member>
+<Member Name="HiFlowSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter High Flowrate Setpoint]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_GENE9" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="LoFlow" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_GENE9" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Flowrate Alarm]]>
+</Description>
+</Member>
+<Member Name="LoFlowSP" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Low Flowrate Setpoint]]>
+</Description>
+</Member>
+<Member Name="Multiplier" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Value Multiplier]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZMETER_GENE13" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="OOS" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZMETER_GENE13" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Out of Service
+1 = OOS]]>
+</Description>
+</Member>
+<Member Name="Tmrs" DataType="METER_GENERIC_TMR" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Total" DataType="REAL" Dimension="0" Radix="Float" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Totalizer Volume]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsFlowrate" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for Flowrate]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsFTPulse" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for FTPulse]]>
+</Description>
+</Member>
+<Member Name="xEngUnitsTotal" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Engineering Units for Totalizer]]>
+</Description>
+</Member>
+<Member Name="xName" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Name]]>
+</Description>
+</Member>
+<Member Name="xNumber" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Number]]>
+</Description>
+</Member>
+<Member Name="xServiceCode" DataType="INT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter Service Code
+0 = Comingle
+1 = Condensate
+2 = Oil
+3 = Water]]>
+</Description>
+</Member>
+<Member Name="xTag" DataType="STRING" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Meter P&ID Tag]]>
+</Description>
+</Member>
+</Members>
+<Dependencies>
+<Dependency Type="DataType" Name="METER_GENERIC_TMR"/>
+</Dependencies>
+</DataType>
+<DataType Name="METER_GENERIC_TMR" Family="NoFamily" Class="User">
+<Description>
+<![CDATA[v1.0]]>
+</Description>
+<Members>
+<Member Name="Bypass" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="HiFlow" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="LoFlow" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+<Member Name="Total" DataType="COUNTER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write"/>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_METER_GENERIC" Revision="1.5" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2014-04-22T03:08:53.282Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2018-09-13T23:25:53.195Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v24.02"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Meter" TagType="Base" DataType="METER_GENERIC" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="CalcOption" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Calculation Option
+0 = Pulse Input
+1 = Real Input]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="FTPWidthTimeout" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Rollover" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Flowrate" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Total" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="false" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="TmrFTPWidth" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,300000,300005]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="300000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="300005"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="FTPWidthAcc" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrFTPLongAgo" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,2147483647,2085951127]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="2147483647"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="2085951127"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ONS" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="TmrCalc" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,999999999,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="999999999"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="FlowratePerScan" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PerScanCalc" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[[EQU(CalcOption,0) JMP(Pulse) ,EQU(CalcOption,1) JMP(Real) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[LBL(Pulse)NOP();]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIO(Rollover)XIO(Meter.OOS)XIC(Meter.FTPulse)ONS(ONS.0)CTU(Meter.Tmrs.Total,2147483647,0);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[XIO(Rollover)MUL(Meter.Tmrs.Total.ACC,Meter.Multiplier,Meter.Total);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[XIC(Rollover)RES(Meter.Tmrs.Total);]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[MOV(FTPWidthTimeout,TmrFTPWidth.PRE);]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Text>
+<![CDATA[XIC(Meter.FTPulse)ONS(ONS.1)[MOV(TmrFTPWidth.ACC,FTPWidthAcc) ,RES(TmrFTPWidth) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Text>
+<![CDATA[[TON(TmrFTPWidth,?,?) ,[XIC(TmrFTPWidth.DN) ,XIC(Meter.OOS) ] [CLR(FTPWidthAcc) ,CLR(Meter.Flowrate) ] ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Text>
+<![CDATA[NEQ(FTPWidthAcc,0)CPT(Meter.Flowrate,86400000 / FTPWidthAcc * Meter.Multiplier);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Text>
+<![CDATA[XIO(Meter.FTPulse)TON(TmrFTPLongAgo,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Text>
+<![CDATA[JMP(Done);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Text>
+<![CDATA[LBL(Real)NOP();]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[XIO(TmrCalc.DN)TON(TmrCalc,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[GRT(TmrCalc.ACC,100)[SUB(TmrCalc.ACC,100,TmrCalc.ACC) ,OTE(PerScanCalc) ];]]>
+</Text>
+</Rung>
+<Rung Number="15" Type="N">
+<Text>
+<![CDATA[XIC(PerScanCalc)CPT(FlowratePerScan,Meter.Flowrate * Meter.Multiplier / 864000.0);]]>
+</Text>
+</Rung>
+<Rung Number="16" Type="N">
+<Text>
+<![CDATA[XIO(Rollover)XIC(PerScanCalc)ADD(Meter.Total,FlowratePerScan,Meter.Total);]]>
+</Text>
+</Rung>
+<Rung Number="17" Type="N">
+<Text>
+<![CDATA[XIC(Rollover)RES(TmrCalc)CLR(Meter.Total);]]>
+</Text>
+</Rung>
+<Rung Number="18" Type="N">
+<Text>
+<![CDATA[JMP(Done);]]>
+</Text>
+</Rung>
+<Rung Number="19" Type="N">
+<Text>
+<![CDATA[LBL(Done)NOP();]]>
+</Text>
+</Rung>
+<Rung Number="20" Type="N">
+<Text>
+<![CDATA[MOV(Meter.Flowrate,Flowrate)MOV(Meter.Total,Total);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="METER_GENERIC"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

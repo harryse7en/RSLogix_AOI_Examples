@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_BYPASS" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2015-01-23T23:26:11.262Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 15:53:44 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+<DataType Name="BYPASS" Family="NoFamily" Class="User">
+<Members>
+<Member Name="ZZZZZZZZZZBYPASS0" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="aaAlwaysOn" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZBYPASS0" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Administrator Option - Always On]]>
+</Description>
+</Member>
+<Member Name="aaNoTimeout" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZBYPASS0" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Administrator Option - No Timeout]]>
+</Description>
+</Member>
+<Member Name="Active" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZBYPASS0" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Active]]>
+</Description>
+</Member>
+<Member Name="HMI_Minutes" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Minutes Setpoint from HMI]]>
+</Description>
+</Member>
+<Member Name="ZZZZZZZZZZBYPASS5" DataType="SINT" Dimension="0" Radix="Decimal" Hidden="true" ExternalAccess="Read/Write"/>
+<Member Name="HMI_RestartCmd" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZBYPASS5" BitNumber="0" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Restart Command from HMI]]>
+</Description>
+</Member>
+<Member Name="HMI_StartCmd" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZBYPASS5" BitNumber="1" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Start Command from HMI]]>
+</Description>
+</Member>
+<Member Name="HMI_StopCmd" DataType="BIT" Dimension="0" Radix="Decimal" Hidden="false" Target="ZZZZZZZZZZBYPASS5" BitNumber="2" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Stop Command from HMI]]>
+</Description>
+</Member>
+<Member Name="MinutesLeft" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Minutes Left]]>
+</Description>
+</Member>
+<Member Name="RestartCount" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Restart Counts Since Start]]>
+</Description>
+</Member>
+<Member Name="SecondsLeft" DataType="DINT" Dimension="0" Radix="Decimal" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Seconds Left]]>
+</Description>
+</Member>
+<Member Name="Timeout" DataType="TIMER" Dimension="0" Radix="NullType" Hidden="false" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Bypass Minutes Timer]]>
+</Description>
+</Member>
+</Members>
+</DataType>
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_BYPASS" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2014-05-18T16:05:48.214Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2015-01-23T23:26:11.262Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v21.03"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Bypass" TagType="Base" DataType="BYPASS" Usage="InOut" Required="true" Visible="true" Constant="false"/>
+<Parameter Name="MaxMinutes" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags/>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[[XIC(Bypass.HMI_StartCmd) ,XIC(Bypass.Active) XIC(Bypass.HMI_RestartCmd) ]GRT(Bypass.HMI_Minutes,0)[LEQ(Bypass.HMI_Minutes,MaxMinutes) MUL(Bypass.HMI_Minutes,60000,Bypass.Timeout.PRE) ,GRT(Bypass.HMI_Minutes,MaxMinutes) MUL(MaxMinutes,60000,Bypass.Timeout.PRE) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[XIC(Bypass.HMI_RestartCmd)RES(Bypass.Timeout);]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIC(Bypass.HMI_RestartCmd)XIC(Bypass.Active)ADD(Bypass.RestartCount,1,Bypass.RestartCount);]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[[XIC(Bypass.HMI_StartCmd) ,XIC(Bypass.Active) ,XIC(Bypass.aaAlwaysOn) ][OTL(Bypass.Active) ,XIO(Bypass.aaAlwaysOn) XIO(Bypass.aaNoTimeout) TON(Bypass.Timeout,1200000,286713) ,CPT(Bypass.MinutesLeft,(Bypass.Timeout.PRE-Bypass.Timeout.ACC)/60000) ,CPT(Bypass.SecondsLeft,(Bypass.Timeout.PRE-Bypass.Timeout.ACC)MOD 60000/1000) ];]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[[XIC(Bypass.Timeout.DN) ,XIC(Bypass.HMI_StopCmd) ]XIO(Bypass.aaAlwaysOn)[OTU(Bypass.Active) ,CLR(Bypass.RestartCount) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[XIO(Bypass.Active)CLR(Bypass.MinutesLeft)CLR(Bypass.SecondsLeft);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[[XIC(Bypass.HMI_StartCmd) OTU(Bypass.HMI_StartCmd) ,XIC(Bypass.HMI_StopCmd) OTU(Bypass.HMI_StopCmd) ,XIC(Bypass.HMI_RestartCmd) OTU(Bypass.HMI_RestartCmd) ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+<Dependencies>
+<Dependency Type="DataType" Name="BYPASS"/>
+</Dependencies>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

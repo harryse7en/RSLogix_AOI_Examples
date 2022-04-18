@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_DEBOUNCER" TargetType="AddOnInstructionDefinition" TargetRevision="1.0 " TargetLastEdited="2015-03-29T20:35:38.582Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 15:57:43 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_DEBOUNCER" Revision="1.0" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2013-11-29T02:25:20.285Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2015-03-29T20:35:38.582Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v21.03"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="Input" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="DebounceMsec" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AverageEn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AverageCounts" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="AveragePeriodMsec" TagType="Base" DataType="DINT" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Output" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="true" Visible="true" ExternalAccess="Read Only">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="DebounceTmr" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,0,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DebounceData" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Timer" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,100,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="100"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Sum" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Counter" DataType="COUNTER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,10,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="COUNTER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="10"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="CU" DataType="BOOL" Value="0"/>
+<DataValueMember Name="CD" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="OV" DataType="BOOL" Value="0"/>
+<DataValueMember Name="UN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Text>
+<![CDATA[[GEQ(DebounceMsec,0) MOV(DebounceMsec,DebounceTmr.PRE) ,LES(DebounceMsec,0) MOV(1,DebounceTmr.PRE) ];]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[[NEQ(Input,DebounceData) TON(DebounceTmr,?,?) ,XIC(DebounceTmr.DN) MOV(Input,DebounceData) ];]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIO(AverageEn)[MOV(DebounceData,Output) ,TND() ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[[LEQ(AverageCounts,0) MOV(1,AverageCounts) ,LEQ(AveragePeriodMsec,0) MOV(1000,AveragePeriodMsec) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[DIV(AveragePeriodMsec,AverageCounts,Timer.PRE)MOV(AverageCounts,Counter.PRE);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[XIO(Timer.DN)[TON(Timer,?,?) ,XIC(Timer.DN) [ADD(Sum,DebounceData,Sum) ,[CTU(Counter,?,?) ,XIC(Counter.DN) [DIV(Sum,AverageCounts,Output) ,RES(Counter) CLR(Sum) ] ] ] ];]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>

@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RSLogix5000Content SchemaRevision="1.0" SoftwareRevision="31.02" TargetName="AOI_RAMP_BASIC" TargetType="AddOnInstructionDefinition" TargetRevision="1.1 " TargetLastEdited="2021-09-03T16:22:09.380Z" ContainsContext="true" Owner="harryse7en" ExportDate="Mon Apr 18 15:59:49 2022" ExportOptions="References NoRawData L5KData DecoratedData Context Dependencies ForceProtectedEncoding AllProjDocTrans">
+<Controller Use="Context" Name="MASTER_AOI_REPOSITORY">
+<DataTypes Use="Context">
+</DataTypes>
+<AddOnInstructionDefinitions Use="Context">
+<AddOnInstructionDefinition Use="Target" Name="AOI_RAMP_BASIC" Revision="1.1" ExecutePrescan="false" ExecutePostscan="false" ExecuteEnableInFalse="false" CreatedDate="2014-08-09T01:36:13.859Z" CreatedBy="LOCALHOST\harryse7en" EditedDate="2021-09-03T16:22:09.380Z" EditedBy="LOCALHOST\harryse7en" SoftwareRevision="v20.04"
+>
+<Parameters>
+<Parameter Name="EnableIn" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Input - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableOut" TagType="Base" DataType="BOOL" Usage="Output" Radix="Decimal" Required="false" Visible="false" ExternalAccess="Read Only">
+<Description>
+<![CDATA[Enable Output - System Defined Parameter]]>
+</Description>
+</Parameter>
+<Parameter Name="EnableRamping" TagType="Base" DataType="BOOL" Usage="Input" Radix="Decimal" Required="true" Visible="true" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Input" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Input value as a 0-100%, such as from PID loop]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="RampUpSec" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Seconds it will take to ramp up]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="RampDownSec" TagType="Base" DataType="REAL" Usage="Input" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Seconds it will take to ramp down]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+<Parameter Name="Output" TagType="Base" DataType="REAL" Usage="Output" Radix="Float" Required="true" Visible="true" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Output as 0-100%]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</Parameter>
+</Parameters>
+<LocalTags>
+<LocalTag Name="UpdateTmr" DataType="TIMER" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[[0,1000,0]]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<Structure DataType="TIMER">
+<DataValueMember Name="PRE" DataType="DINT" Radix="Decimal" Value="1000"/>
+<DataValueMember Name="ACC" DataType="DINT" Radix="Decimal" Value="0"/>
+<DataValueMember Name="EN" DataType="BOOL" Value="0"/>
+<DataValueMember Name="TT" DataType="BOOL" Value="0"/>
+<DataValueMember Name="DN" DataType="BOOL" Value="0"/>
+</Structure>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Update_AmountABS" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Update_Amount" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[The amount to change the output value each time UpdateTmr is done.]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PctRef_Changed" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Input has changed, do new calculations.]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PctRef_Check" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="PctRef_Buffer" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Buffer to hold the input reference]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="OutputError" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Difference between the input and output]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="ONS" DataType="DINT" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="DINT" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Update_LowLimit" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Update_HighLimit" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="DownSec_Buffer" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Buffer to hold the seconds to span the decel rate.]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Down_Rate" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Rate to ramp down based on the OutputError and the Sec_Buffer.]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Down_Enable" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Up_Enable" DataType="BOOL" Radix="Decimal" ExternalAccess="Read/Write">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="UpSec_Buffer" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Buffer to hold the seconds to span the accel rate.]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Up_Rate" DataType="REAL" Radix="Float" ExternalAccess="Read/Write">
+<Description>
+<![CDATA[Rate to ramp up based on the OutputError and the Sec_Buffer.]]>
+</Description>
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="Output_Buffer" DataType="REAL" Radix="Float" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0.00000000e+000]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="REAL" Radix="Float" Value="0.0"/>
+</DefaultData>
+</LocalTag>
+<LocalTag Name="UpdateTmrDN" DataType="BOOL" Radix="Decimal" ExternalAccess="None">
+<DefaultData Format="L5K">
+<![CDATA[0]]>
+</DefaultData>
+<DefaultData Format="Decorated">
+<DataValue DataType="BOOL" Radix="Decimal" Value="0"/>
+</DefaultData>
+</LocalTag>
+</LocalTags>
+<Routines>
+<Routine Name="Logic" Type="RLL">
+<RLLContent>
+<Rung Number="0" Type="N">
+<Comment>
+<![CDATA[AOI RAMPING ANALOG - BASIC
+12/18/14 harryse7en
+
+This AOI is built to handle 0-100% input and output.  If scaling is required it must be performed externally]]>
+</Comment>
+<Text>
+<![CDATA[NOP();]]>
+</Text>
+</Rung>
+<Rung Number="1" Type="N">
+<Text>
+<![CDATA[[LEQ(RampUpSec,0.0) ,LEQ(RampDownSec,0.0) ]TND();]]>
+</Text>
+</Rung>
+<Rung Number="2" Type="N">
+<Text>
+<![CDATA[XIO(EnableRamping)[MOV(Input,Output) ,OTU(Up_Enable) OTU(Down_Enable) ,TND() ];]]>
+</Text>
+</Rung>
+<Rung Number="3" Type="N">
+<Text>
+<![CDATA[XIC(EnableRamping)MOV(Input,PctRef_Buffer)MOV(RampUpSec,UpSec_Buffer)MOV(RampDownSec,DownSec_Buffer)MOV(1000,UpdateTmr.PRE);]]>
+</Text>
+</Rung>
+<Rung Number="4" Type="N">
+<Text>
+<![CDATA[NEQ(PctRef_Buffer,PctRef_Check)[SUB(PctRef_Buffer,Output_Buffer,OutputError) ,MOV(PctRef_Buffer,PctRef_Check) ,OTE(PctRef_Changed) ];]]>
+</Text>
+</Rung>
+<Rung Number="5" Type="N">
+<Text>
+<![CDATA[XIO(UpdateTmr.DN)TON(UpdateTmr,?,?);]]>
+</Text>
+</Rung>
+<Rung Number="6" Type="N">
+<Text>
+<![CDATA[GEQ(UpdateTmr.ACC,100)[SUB(UpdateTmr.ACC,100,UpdateTmr.ACC) ,OTE(UpdateTmrDN) ];]]>
+</Text>
+</Rung>
+<Rung Number="7" Type="N">
+<Comment>
+<![CDATA[IF THE INPUT BUFFER IS LESS THAN THE OUTPUT THEN THE SPEED CHANGE REQUEST IS SLOWER AND A DECEL RATE IS CALCULATED]]>
+</Comment>
+<Text>
+<![CDATA[XIC(PctRef_Changed)LES(PctRef_Buffer,Output_Buffer)[DIV(OutputError,DownSec_Buffer,Down_Rate) ,DIV(Down_Rate,10.0,Update_Amount) ,OTU(Up_Enable) OTL(Down_Enable) ];]]>
+</Text>
+</Rung>
+<Rung Number="8" Type="N">
+<Comment>
+<![CDATA[IF THE INPUT BUFFER IS GREATER THAN THE OUTPUT THEN THE CHANGE REQUEST IS FASTER AND A ACCEL RATE IS CALCULATED]]>
+</Comment>
+<Text>
+<![CDATA[XIC(PctRef_Changed)GRT(PctRef_Buffer,Output_Buffer)[DIV(OutputError,UpSec_Buffer,Up_Rate) ,DIV(Up_Rate,10.0,Update_Amount) ,OTL(Up_Enable) OTU(Down_Enable) ];]]>
+</Text>
+</Rung>
+<Rung Number="9" Type="N">
+<Comment>
+<![CDATA[CALCULATES THE HIGH AND LOW SETPOINT LIMITS BASED ON THE UPDATE INCREMENT CACULATION. THIS IS USED TO SET THE ANALOG OUTPUT TO ZERO WHEN THE ANALOG OUTPUT IS WITHIN THE LIMITS THAT WAY THE ANALOG OUTPUT DOES NOT STOP CALCULATING WITH A NUMBER TO SMALL TO SUBTRACT AND LEAVING A SAMLL DECIMAL .
+]]>
+</Comment>
+<Text>
+<![CDATA[[XIC(Down_Enable) ,XIC(Up_Enable) ]ABS(Update_Amount,Update_AmountABS)ADD(PctRef_Buffer,Update_AmountABS,Update_HighLimit)SUB(PctRef_Buffer,Update_AmountABS,Update_LowLimit);]]>
+</Text>
+</Rung>
+<Rung Number="10" Type="N">
+<Comment>
+<![CDATA[THIS RUNG WILL COMPARE (LIM) AND WHEN THE ANALOG OUTPUT IS WITHIN THE LIMITS (ALMOST ZERO) ZERO BOTH THE ANALOG OUTPUT AND THE OUTPUT ERROR WORDS.
+
+AND UNLATCH THE ACCEL OR DECEL SPEED CHANGE 
+]]>
+</Comment>
+<Text>
+<![CDATA[LIM(Update_LowLimit,Output_Buffer,Update_HighLimit)ONS(ONS.3)[MOV(PctRef_Buffer,Output_Buffer) ,MOV(0.0,OutputError) ,OTU(Up_Enable) OTU(Down_Enable) ];]]>
+</Text>
+</Rung>
+<Rung Number="11" Type="N">
+<Comment>
+<![CDATA[THIS WILL TAKE THE CURRENT ANALOG OUTPUT VALUE AND ADD THE CALCULATED UPDATE INCREMENT AND PUT THE RESULT BACK INTO THE ANALOG OUTPUT, AT THE RATE FROM UPDATE TIMER.
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Down_Enable)XIC(UpdateTmrDN)GRT(Output_Buffer,PctRef_Buffer)ADD(Output_Buffer,Update_Amount,Output_Buffer);]]>
+</Text>
+</Rung>
+<Rung Number="12" Type="N">
+<Comment>
+<![CDATA[THIS WILL TAKE THE CURRENT ANALOG OUTPUT VALUE AND ADD THE CALCULATED UPDATE INCREMENT AND PUT THE RESULT BACK INTO THE ANALOG OUTPUT, AT THE RATE FROM UPDATE TIMER.
+]]>
+</Comment>
+<Text>
+<![CDATA[XIC(Up_Enable)XIC(UpdateTmrDN)GRT(PctRef_Buffer,Output_Buffer)ADD(Output_Buffer,Update_Amount,Output_Buffer);]]>
+</Text>
+</Rung>
+<Rung Number="13" Type="N">
+<Text>
+<![CDATA[[LEQ(Output_Buffer,0.0) MOV(0.0,Output_Buffer) ,GEQ(Output_Buffer,100.0) MOV(100.0,Output_Buffer) ];]]>
+</Text>
+</Rung>
+<Rung Number="14" Type="N">
+<Text>
+<![CDATA[MOV(Output_Buffer,Output);]]>
+</Text>
+</Rung>
+</RLLContent>
+</Routine>
+</Routines>
+</AddOnInstructionDefinition>
+</AddOnInstructionDefinitions>
+</Controller>
+</RSLogix5000Content>
